@@ -8,8 +8,11 @@ class Quotes(scrapy.Spider):
 
     def parse(self, response: Response, **kwargs: Any) -> Any:
         title = response.css('title::text').extract()
-        yield{'titletext': title}
         all_quotes = response.css('div.quote').extract()
         quotes = all_quotes.css('span.text::text').extract()
         author = all_quotes.css('.author::text').extract()
+        yield{'title': title,
+              'author': author,
+              'quote':quotes
+              }
         # return super().parse(response, **kwargs)
