@@ -7,6 +7,6 @@ class Quotes(scrapy.Spider):
     start_urls = ['https://quotes.toscrape.com/']
 
     def parse(self, response: Response, **kwargs: Any) -> Any:
-        title = response.css('title').extract()
-        yield{'titltext': title}
-        return super().parse(response, **kwargs)
+        title = response.css('title::text').extract()
+        yield{'titletext': title}
+        # return super().parse(response, **kwargs)
