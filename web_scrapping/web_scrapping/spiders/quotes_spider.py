@@ -4,7 +4,7 @@ from scrapy.http import Response
 
 class Quotes(scrapy.Spider):
     name = 'quotes'
-    start_url = ['https://quotes.toscrape.com/']
+    start_urls = ['https://quotes.toscrape.com/']
 
     def parse(self, response: Response, **kwargs: Any) -> Any:
         title = response.css('title').extract()
